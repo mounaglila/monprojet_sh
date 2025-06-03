@@ -7,15 +7,8 @@ if ! command -v node &> /dev/null; then
     exit 1
 fi
 
-# Génération d'un timestamp unique
-timestamp=$(date +"%Y%m%d_%H%M%S")
-
 # Définition des répertoires
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PARENT_DIR="$(dirname "$SCRIPT_DIR")"
-PROJET_DIR="$PARENT_DIR/projet"
-BACKEND_DIR="$PROJET_DIR/backend_$timestamp"
-
+BACKEND_DIR="$ROOT_DIR%/backend"
 CONFIG_DIR="$BACKEND_DIR/Config"
 ROUTES_DIR="$BACKEND_DIR/Routes"
 
@@ -28,7 +21,7 @@ DB_NAME="$2"
 USERNAME="$3"
 PASSWORD="$4"
 PORT="${5:-3000}"  # Port par défaut : 3000
-
+ROOT_DIR="$6"
 # Affichage des paramètres pour vérification
 echo "DB_URI: $DB_URI"
 echo "DB_NAME: $DB_NAME"
